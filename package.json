@@ -1,0 +1,60 @@
+{
+  "name": "dg-meter-sql",
+  "description": "Display a Directus Insights meter from the first value of a SQL query.",
+  "icon": "speed",
+  "version": "1.0.0",
+  "author": "Diego H. Gurpegui (https://github.com/diegogurpegui)",
+  "license": "MIT",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-extension-bundle",
+    "directus-extension-panel",
+    "meter",
+    "insights",
+    "sql"
+  ],
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "directus:extension": {
+    "type": "bundle",
+    "path": {
+      "app": "dist/index.js",
+      "api": "dist/endpoint.js"
+    },
+    "source": {
+      "app": "src/index.ts",
+      "api": "src/endpoint.ts"
+    },
+    "host": "^10.10.0",
+    "entries": [
+      {
+        "type": "endpoint",
+        "name": "dg-meter-sql-query",
+        "source": "src/endpoint.ts"
+      },
+      {
+        "type": "panel",
+        "name": "dg-meter-sql",
+        "source": "src/index.ts"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "directus-extension build",
+    "dev": "directus-extension build -w --no-minify",
+    "link": "directus-extension link",
+    "validate": "directus-extension validate",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@directus/extensions-sdk": "17.0.3",
+    "typescript": "^5.9.3",
+    "vue": "^3.5.24"
+  },
+  "dependencies": {
+    "vue-i18n": "^11.2.1"
+  }
+}
